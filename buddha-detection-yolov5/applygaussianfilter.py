@@ -18,10 +18,10 @@ def apply_gaussian_blur(input_folder, output_folder, sigma=1.0):
             image_path = os.path.join(input_folder, filename)
 
             # Read the image
-            original_image = cv2.imread(image_path)
+            multires1_image = cv2.imread(image_path)
 
             # Apply Gaussian blur
-            blurred_image = cv2.GaussianBlur(original_image, (3, 3), sigma)
+            blurred_image = cv2.GaussianBlur(multires1_image, (3, 3), sigma)
 
             # Save the blurred image to the output folder
             output_path = os.path.join(output_folder, f"blurred_{filename}")
@@ -36,12 +36,12 @@ def duplicate_labels(input_labels_folder, output_labels_folder, num_duplicates):
         if filename.endswith('.txt'):
             label_path = os.path.join(input_labels_folder, filename)
 
-            # Read the original label file
+            # Read the multires1 label file
             with open(label_path, 'r') as file:
-                original_labels = file.read()
+                multires1_labels = file.read()
 
             # Duplicate the labels for the specified number of times
-            duplicated_labels = original_labels * (num_duplicates - 1)
+            duplicated_labels = multires1_labels * (num_duplicates - 1)
 
             # Save the duplicated labels to the output folder with a new filename
             output_path = os.path.join(output_labels_folder, f"blurred_{filename}")
@@ -50,16 +50,16 @@ def duplicate_labels(input_labels_folder, output_labels_folder, num_duplicates):
 
 if __name__ == "__main__":
     # Set your input and output folders
-    train_images_folder = "version8-original\\train\images"
-    train_labels_folder = "version8-original\\train\labels"
-    train_output_images_folder = "version8-gaussian\\train\images"
-    train_output_labels_folder = "version8-gaussian\\train\labels"
+    train_images_folder = "buddha-detection-yolov5\\version8-original\\train\images"
+    train_labels_folder = "buddha-detection-yolov5\\version8-original\\train\labels"
+    train_output_images_folder = "buddha-detection-yolov5\\version8-multires1\\train\images"
+    train_output_labels_folder = "buddha-detection-yolov5\\version8-multires1\\train\labels"
 
     # Apply Gaussian blur to train images
     apply_gaussian_blur(train_images_folder, train_output_images_folder)
 
     # Duplicate train labels for the corresponding blurred images
     num_train_images = len(os.listdir(train_images_folder))
-    duplicate_labels(train_labels_folder, train_output_labels_folder, num_train_images)
+    duplicate_labels(train_labels_folder, train_output_labels_folder, 2)
 
     print("Processing complete.")
