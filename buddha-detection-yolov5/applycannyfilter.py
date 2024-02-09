@@ -44,13 +44,13 @@ def duplicate_labels(input_labels_folder, output_labels_folder, num_duplicates):
 
 if __name__ == "__main__":
     # Set your input and output folders
-    train_images_folder = "path/to/train/images"
-    train_labels_folder = "path/to/train/labels"
-    train_output_images_folder = "path/to/train/canny_images"
-    train_output_labels_folder = "path/to/train/canny_labels"
-
+    train_images_folder = "buddha-detection-yolov5\\version8-original\\train\images"
+    train_labels_folder = "buddha-detection-yolov5\\version8-original\\train\labels"
+    train_output_images_folder = "buddha-detection-yolov5\\version8-canny-high\\train\images"
+    train_output_labels_folder = "buddha-detection-yolov5\\version8-canny-high\\train\labels"
+    
     # Set Canny edge detection parameters
-    low_threshold = 50
+    low_threshold = 80
     high_threshold = 150
 
     # Apply Canny filter to train images
