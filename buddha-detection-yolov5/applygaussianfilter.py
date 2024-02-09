@@ -50,10 +50,10 @@ def duplicate_labels(input_labels_folder, output_labels_folder, num_duplicates):
 
 if __name__ == "__main__":
     # Set your input and output folders
-    train_images_folder = "buddha-detection-yolov5\\version8-original\\train\images"
-    train_labels_folder = "buddha-detection-yolov5\\version8-original\\train\labels"
-    train_output_images_folder = "buddha-detection-yolov5\\version8-multires1\\train\images"
-    train_output_labels_folder = "buddha-detection-yolov5\\version8-multires1\\train\labels"
+    train_images_folder = "buddha-detection-yolov5\\version8-multires3\\train\images"
+    train_labels_folder = "buddha-detection-yolov5\\version8-multires3\\train\labels"
+    train_output_images_folder = "buddha-detection-yolov5\\version8-multires4\\train\images"
+    train_output_labels_folder = "buddha-detection-yolov5\\version8-multires4\\train\labels"
 
     # Apply Gaussian blur to train images
     apply_gaussian_blur(train_images_folder, train_output_images_folder)
