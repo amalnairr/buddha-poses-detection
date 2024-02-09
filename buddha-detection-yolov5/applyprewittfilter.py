@@ -58,10 +58,10 @@ def duplicate_labels(input_labels_folder, output_labels_folder):
 
 if __name__ == "__main__":
     # Set your input and output folders
-    train_images_folder = "version8-original/test/images"
-    train_labels_folder = "version8-original/test/labels"
-    train_output_images_folder = "version8-prewitt-only/test/images"
-    train_output_labels_folder = "version8-prewitt-only/test/labels"
+    train_images_folder = "buddha-detection-yolov5\\version8-original\\train\images"
+    train_labels_folder = "buddha-detection-yolov5\\version8-original\\train\labels"
+    train_output_images_folder = "buddha-detection-yolov5\\version8-canny-only\\train\images"
+    train_output_labels_folder = "buddha-detection-yolov5\\version8-canny-only\\train\labels"
 
     # Apply Prewitt filter to train images
     apply_prewitt_filter(train_images_folder, train_output_images_folder)
