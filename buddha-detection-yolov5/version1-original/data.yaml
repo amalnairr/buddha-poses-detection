@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 7
+names: ['baby-buddha', 'buddha-horse-riding', 'buddha-pyre', 'buddha-sitting', 'buddha-sleeping', 'buddha-standing', 'buddha-wrestling']
+
+roboflow:
+  workspace: warburg-buddha-poses
+  project: buddha-poses-detection
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/warburg-buddha-poses/buddha-poses-detection/dataset/1
