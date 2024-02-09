@@ -21,7 +21,7 @@ def apply_canny_filter(input_folder, output_folder, low_threshold, high_threshol
             output_path = os.path.join(output_folder, f"canny_{filename}")
             cv2.imwrite(output_path, edges)
 
-def duplicate_labels(input_labels_folder, output_labels_folder, num_duplicates):
+def duplicate_labels(input_labels_folder, output_labels_folder):
     # Create output folder if it doesn't exist
     os.makedirs(output_labels_folder, exist_ok=True)
 
@@ -35,7 +35,7 @@ def duplicate_labels(input_labels_folder, output_labels_folder, num_duplicates):
                 original_labels = file.read()
 
             # Duplicate the labels for the specified number of times
-            duplicated_labels = original_labels * num_duplicates
+            duplicated_labels = original_labels
 
             # Save the duplicated labels to the output folder with a new filename
             output_path = os.path.join(output_labels_folder, f"canny_{filename}")
@@ -51,15 +51,13 @@ if __name__ == "__main__":
     
     # Set Canny edge detection parameters
     low_threshold = 80
-    high_threshold = 150
+    high_threshold = 110
 
     # Apply Canny filter to train images
     apply_canny_filter(train_images_folder, train_output_images_folder, low_threshold, high_threshold)
 
     # Duplicate train labels for the corresponding Canny-filtered images
-    num_train_images = len(os.listdir(train_images_folder))
-    duplicate_labels(train_labels_folder, train_output_labels_folder, num_train_images)
-
+    duplicate_labels(train_labels_folder, train_output_labels_folder)
     # Repeat the process for test and val sets if needed
     # ...
 

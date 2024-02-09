@@ -35,7 +35,7 @@ def apply_prewitt_filter(input_folder, output_folder):
             output_path = os.path.join(output_folder, f"prewitt_{filename}")
             cv2.imwrite(output_path, magnitude)
 
-def duplicate_labels(input_labels_folder, output_labels_folder, num_duplicates):
+def duplicate_labels(input_labels_folder, output_labels_folder):
     # Create output folder if it doesn't exist
     os.makedirs(output_labels_folder, exist_ok=True)
 
@@ -49,7 +49,7 @@ def duplicate_labels(input_labels_folder, output_labels_folder, num_duplicates):
                 original_labels = file.read()
 
             # Duplicate the labels for the specified number of times
-            duplicated_labels = original_labels * num_duplicates
+            duplicated_labels = original_labels
 
             # Save the duplicated labels to the output folder with a new filename
             output_path = os.path.join(output_labels_folder, f"prewitt_{filename}")
@@ -58,17 +58,17 @@ def duplicate_labels(input_labels_folder, output_labels_folder, num_duplicates):
 
 if __name__ == "__main__":
     # Set your input and output folders
-    train_images_folder = "version8-original/valid/images"
-    train_labels_folder = "version8-original/valid/labels"
-    train_output_images_folder = "version8-prewitt-only/valid/images"
-    train_output_labels_folder = "version8-prewitt-only/valid/labels"
+    train_images_folder = "version8-original/test/images"
+    train_labels_folder = "version8-original/test/labels"
+    train_output_images_folder = "version8-prewitt-only/test/images"
+    train_output_labels_folder = "version8-prewitt-only/test/labels"
 
     # Apply Prewitt filter to train images
     apply_prewitt_filter(train_images_folder, train_output_images_folder)
 
     # Duplicate train labels for the corresponding Prewitt-filtered images
     num_train_images = len(os.listdir(train_images_folder))
-    duplicate_labels(train_labels_folder, train_output_labels_folder, 2)
+    duplicate_labels(train_labels_folder, train_output_labels_folder)
 
     # Repeat the process for test and val sets if needed
     # ...
